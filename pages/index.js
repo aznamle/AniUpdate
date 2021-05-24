@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import Link from 'next/link'
 import { getToken } from './login'
+import { useRouter } from 'next/router'
+
 
 export default function Home() {
-  
-  const client_id = '2467'
-  const redirect_uri = 'http://localhost:3000'
-  const client_secret = 'dA0WXcLbo4mD4tob3vXskQAjP2SwvbVKgA7KqK3Q'
-  const code = '';
-
   const [token, setToken] = useState(null)
+  const router = useRouter()
 
   useEffect(() => {
-    const token = getToken()
-    console.log("TOKEN: ", token)
-
-    if(token) {
-      setToken(token)
+    
     }
   }, [])
 
+  const client_id = '2467'
+  const redirect_uri = 'http://localhost:3000'
+  const client_secret = 'dA0WXcLbo4mD4tob3vXskQAjP2SwvbVKgA7KqK3Q'
+
   const PostToken = () => {
+    const code = getToken()
+
     const data = fetch('https://anilist.co/api/v2/oauth/token', {
         mode: 'no-cors',
         method: 'POST',
@@ -38,14 +37,11 @@ export default function Home() {
     })
 
     console.log(data)
-
-}
+  }
 
   return (
     <div className="flex justify-center items-center text-center">
-      { token ? (
-        <h1>HI HI HELLO</h1>
-      ) :
+      { token ? <></> :
       <div>
       <h1>login please</h1>
       <Link href='/login'>

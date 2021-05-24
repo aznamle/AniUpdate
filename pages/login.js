@@ -6,7 +6,7 @@ const redirect_uri = 'http://localhost:3000'
 const client_secret = 'dA0WXcLbo4mD4tob3vXskQAjP2SwvbVKgA7KqK3Q'
 
 export const getToken = () => {
-    const token = window.location.search.split('=def')
+    const token = window.location.search.split('=')
     return token[1]
 }
 
