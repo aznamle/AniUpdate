@@ -6,8 +6,14 @@ const redirect_uri = 'http://localhost:3000'
 const client_secret = 'dA0WXcLbo4mD4tob3vXskQAjP2SwvbVKgA7KqK3Q'
 
 export const getToken = () => {
-    const token = window.location.hash.split('=')
-    return token[1]
+    const token = window.location.hash.substring(1).split('&')
+    .reduce((initial, item) => {
+      var parts = item.split('=')
+      initial[parts[0]] =
+      decodeURIComponent(parts[1])
+      console.log(initial)
+      return initial
+    }, {})
 }
 
 const Login = () => {    

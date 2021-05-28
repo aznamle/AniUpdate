@@ -10,22 +10,26 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    const token = getToken()
+    const hash = getToken()
+    window.location.hash = ""
+    console.log()
 
-    if(token) {
-      setToken(token)
-    }
+
+    console.log(token)
   }, [])
 
   return (
     <div className="flex justify-center items-center text-center">
-      { token ? <Test />:
-      <div>
-      <h1>login please</h1>
-      <Link href='/login'>
-      <a>login</a>
-      </Link>
-      </div>
+      {  
+      token ? 
+        <Test />
+      :
+        <div>
+          <h1>login please</h1>
+          <Link href='/login'>
+            <a>login</a>
+          </Link>
+        </div>
       }
 
     </div>
